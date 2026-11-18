@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designing a Resource-Asymmetric NIDS for Edge IoT Gateways — datptit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="progress-bar" id="progress"></div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="prompt">root@datptit</span>:~/writeups# <span class="cursor"></span>
+      </a>
+      <div class="nav-right">
+        <a href="index.html">← cd ..</a>
+        <a href="https://github.com/datptitudu2" target="_blank">github</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="article-wrap">
+    <div class="article-header">
+      <div class="post-meta">
+        <span>[2026-11-18] // RESEARCH NOTE</span>
+        <span>6 min read</span>
+      </div>
+      <h1>Engineering Notes: Designing a Resource-Asymmetric NIDS for Edge IoT Gateways</h1>
+      <div class="tags">
+        <span class="tag">Edge-AI</span>
+        <span class="tag">IoT-NIDS</span>
+        <span class="tag">Adversarial-ML</span>
+        <span class="tag">Suricata</span>
+      </div>
+    </div>
+
+    <div class="article-body">
+      <p>
+        Deploying machine learning-based Network Intrusion Detection Systems (NIDS) directly on IoT edge gateways is very different from running detectors on cloud GPUs. Over the past year at the <b>Data Governance Laboratory (PTIT)</b> under Dr. Huy-Trung Nguyen, I co-authored <i>Tiny-MARL</i> (currently under minor revision) to explore how far we can push real-time detection and defense on a single-core, memory-constrained edge budget.
+      </p>
+
+      <h2>01. The Four Physical Bottlenecks at the Edge</h2>
+      <ul>
+        <li><b>Strict Hardware Ceilings:</b> Edge routers and field gateways cannot host multi-million parameter neural networks or frequent full retraining loops.</li>
+        <li><b>Sub-Millisecond Latency:</b> Inline packet/flow inspection must stay fast enough to avoid buffer overflows and packet drops.</li>
+        <li><b>Concept Drift:</b> Real IoT traffic shifts continuously as devices change operational modes or new attack families emerge.</li>
+        <li><b>Slow Rule Response:</b> A classifier that only raises alerts does not block traffic; manual firewall rule authoring leaves a window of exposure.</li>
+      </ul>
+
+      <div class="diagram-box">
+        <img src="assets/edge-soc-arch.svg" alt="2-Tier Resource-Asymmetric Edge-SOC Architecture">
+        <div class="diagram-caption">Figure 1: 2-Tier Resource-Asymmetric Edge–SOC Architecture separating inline detection from out-of-band rule synthesis.</div>
+      </div>
+
+      <h2>02. Entropy-Gated Routing &amp; Drift Adaptation</h2>
+      <p>
+        Instead of running a single heavy model on every flow, we pair a shallow Fast-Path LightGBM model with a deeper classifier behind an <b>entropy gate</b>. Confident flows terminate immediately on the Fast Path, while ambiguous flows are escalated to the deeper model.
+      </p>
+      <p>
+        For handling temporal concept drift, one of our most interesting empirical takeaways was comparing a tabular Q-learning adaptation controller against classical statistical drift detectors (EWMA, CUSUM, ADWIN). In practice, a well-calibrated <b>CUSUM trigger</b> proved remarkably competitive—recovering accuracy reliably under drift while avoiding unnecessary CPU-heavy retraining.
+      </p>
+
+      <h2>03. Adversarial Pressure Beyond Accuracy</h2>
+      <p>
+        Most flow-based NIDS evaluations focus only on evasion (making an attack look benign). At the edge, however, an attacker can also target <b>system resources</b>:
+      </p>
+      <ul>
+        <li><b>Forced Escalation:</b> Perturbing packet timing, padding, or counts to inflate Fast-Path entropy and overload the deeper model.</li>
+        <li><b>Spurious Retraining:</b> Triggering covariate drift bursts without changing labels to waste gateway CPU on useless retraining cycles.</li>
+      </ul>
+      <p>
+        Working on these attack simulations made me realize how critical adversarial robustness is for AI-enabled security systems—and why I am eager to dive deeper into adversarial ML and real-world exploitation techniques.
+      </p>
+
+      <h2>04. Why Small Language Models Need a Deterministic Compiler</h2>
+      <p>
+        We also tested whether a compact local Small Language Model (<code>Qwen2.5-Coder-1.5B</code>) on an out-of-band SOC server could translate alerts into enforceable <b>Suricata</b> rules. Raw SLM outputs failed syntax validation in every single trial. By restricting the SLM to structured JSON field filling (<code>protocol</code>, <code>port</code>, <code>content</code>) and delegating rule assembly to a deterministic compiler + <code>suricata -T</code> check, we achieved reliable, non-blocking rule deployment without putting an LLM on the packet path.
+      </p>
+    </div>
+
+    <footer>
+      <div><a href="index.html">← Back to ~/writeups</a></div>
+      <div>© 2026 Nguyen Tien Dat (PTIT)</div>
+    </footer>
+  </main>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      document.getElementById('progress').style.width = pct + '%';
+    });
+  </script>
+</body>
+</html>

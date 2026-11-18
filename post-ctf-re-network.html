@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VSL CTF 2026 Writeup: Key-Game &amp; Trust-Issues — datptit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="progress-bar" id="progress"></div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="prompt">root@datptit</span>:~/writeups# <span class="cursor"></span>
+      </a>
+      <div class="nav-right">
+        <a href="index.html">← cd ..</a>
+        <a href="https://github.com/datptitudu2" target="_blank">github</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="article-wrap">
+    <div class="article-header">
+      <div class="post-meta">
+        <span>[2026-01-26] // VSL CTF 2026 WRITEUP</span>
+        <span>4 min read</span>
+      </div>
+      <h1>VSL CTF 2026 Writeup: Chaining LFI &amp; Python SSTI (Key-Game &amp; Trust-Issues)</h1>
+      <div class="tags">
+        <span class="tag">VSL-CTF-2026</span>
+        <span class="tag">Web-Exploitation</span>
+        <span class="tag">LFI</span>
+        <span class="tag">SSTI</span>
+      </div>
+    </div>
+
+    <div class="article-body">
+      <p>
+        <b>VSL CTF 2026</b> (hosted by VKU Security Lab on Jan 24–25, 2026) featured several neat web exploitation challenges that reward careful dependency auditing and sandbox-escape fundamentals. Below is a concise write-up of two challenges: <b>Key-Game</b> and <b>Trust-Issues</b>.
+      </p>
+
+      <h2>01. Key-Game — LFI via Legacy jQuery-jFeed Proxy</h2>
+      <p>
+        Auditing the challenge's <code>Dockerfile</code> revealed an outdated system package dependency: <code>libjs-jquery-jfeed</code>, which ships an unauthenticated example script at <code>/javascript/jquery-jfeed/proxy.php</code>.
+      </p>
+      <ul>
+        <li><b>Root Cause:</b> <code>proxy.php</code> passes the user-supplied <code>url</code> parameter directly into a file/URL fetch without restricting schemes, allowing Local File Inclusion (LFI) via <code>file://</code>.</li>
+        <li><b>Secret &amp; Session Extraction:</b> Reading local files exposed the application's secret key and PHP session state:
+          <br><code>GET /javascript/jquery-jfeed/proxy.php?url=file:///var/www/secret_key.txt</code>
+          <br><code>GET /javascript/jquery-jfeed/proxy.php?url=file:///tmp/sess_&lt;SESSION_ID&gt;</code>
+        </li>
+        <li><b>Exploit:</b> Using the leaked secret key and session state, we forged/replayed valid session parameters to step through the 40-round validation loop automatically and retrieve the flag.</li>
+      </ul>
+
+      <h2>02. Trust-Issues — Python SSTI &amp; Sandbox Escape</h2>
+      <p>
+        This challenge exposed a calculator endpoint (<code>/calc?text=...</code>) where untrusted input or poisoned HTTP headers reached a Python/Jinja evaluation context.
+      </p>
+      <ul>
+        <li><b>Root Cause:</b> Insufficient input sanitization before template/expression evaluation, combined with header/log poisoning vectors.</li>
+        <li><b>Sandbox Escape Payload:</b> Walking Python's object hierarchy from an empty tuple <code>()</code> to locate <code>catch_warnings</code> and access <code>__builtins__['open']</code>:
+          <br><code>[c for c in ().__class__.__base__.__subclasses__() if c.__name__ == 'catch_warnings'][0]()._module.__builtins__['open']('flag.txt').read()</code>
+        </li>
+        <li><b>Takeaway:</b> Never overlook legacy OS packages in Dockerfiles (like <code>libjs-jquery-jfeed</code>) or expose Python object introspection in restricted evaluation contexts.</li>
+      </ul>
+    </div>
+
+    <footer>
+      <div><a href="index.html">← Back to ~/writeups</a></div>
+      <div>© 2026 Nguyen Tien Dat (PTIT)</div>
+    </footer>
+  </main>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      document.getElementById('progress').style.width = pct + '%';
+    });
+  </script>
+</body>
+</html>

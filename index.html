@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>datptit@sec-notes — Cybersecurity &amp; Edge AI Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="prompt">root@datptit</span>:~# <span class="cursor"></span>
+      </a>
+      <div class="nav-right">
+        <a href="#research">./writeups</a>
+        <a href="#arsenal">./arsenal</a>
+        <a href="https://github.com/datptitudu2" target="_blank">github</a>
+        <span class="status-pill"><span class="status-dot"></span>GCC 2027 Applicant</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero + Terminal -->
+    <section class="hero">
+      <div class="hero-card">
+        <div>
+          <div class="hero-top">
+            <div class="avatar-wrap">
+              <img class="avatar" src="assets/avatar.png" alt="Nguyen Tien Dat">
+            </div>
+            <div class="hero-title">
+              <h1>NGUYEN TIEN DAT</h1>
+              <div class="hero-handle">@datptit // Security Researcher &amp; CTF Player</div>
+            </div>
+          </div>
+          <p class="hero-bio">
+            Final-year IT undergraduate at <b>PTIT</b> (Hanoi) &amp; Undergraduate Researcher at the
+            <b>Data Governance Laboratory</b>. Focused on <b>Edge AI / IoT Intrusion Detection</b>,
+            <b>Adversarial Machine Learning</b>, <b>Endpoint &amp; Network Defense</b>, and <b>Reverse Engineering</b>.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#research">Explore Write-ups →</a>
+          <a class="btn btn-ghost" href="https://github.com/datptitudu2" target="_blank">GitHub Profile</a>
+          <a class="btn btn-ghost" href="mailto:nguyentdat16@gmail.com">Email Me</a>
+        </div>
+      </div>
+
+      <div class="terminal">
+        <div class="term-header">
+          <div class="term-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="term-title">bash — datptit@ptit-lab</div>
+        </div>
+        <div class="term-body">
+          <div><span class="cmd">$ whoami</span></div>
+          <div class="out-val">Nguyen Tien Dat (DOB: 2005 | PTIT, Vietnam)</div>
+          <br>
+          <div><span class="cmd">$ cat research_focus.json</span></div>
+          <div>{</div>
+          <div>&nbsp;&nbsp;<span class="out-key">"paper"</span>: <span class="out-val">"Tiny-MARL (Under Minor Revision)"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="out-key">"domains"</span>: [<span class="out-val">"Edge IoT NIDS"</span>, <span class="out-val">"Adversarial ML"</span>, <span class="out-val">"DLP"</span>],</div>
+          <div>&nbsp;&nbsp;<span class="out-key">"ctf"</span>: <span class="out-val">"Top 16 PTIT CTF Qualifier 2026"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="out-key">"english"</span>: <span class="out-val">"TOEIC 750"</span></div>
+          <div>}</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-num">Tiny-MARL</div>
+        <div class="stat-label">Co-authored Research Paper (Minor Revision)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">Top 16</div>
+        <div class="stat-label">PTIT CTF Qualification Round (2026)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">DLP System</div>
+        <div class="stat-label">On-Premise Security Research @ RIPT</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">3.31 / 4.0</div>
+        <div class="stat-label">GPA &amp; PTIT Academic Scholarship</div>
+      </div>
+    </section>
+
+    <!-- Research & Write-ups -->
+    <section id="research">
+      <div class="section-head">
+        <div class="section-title">RESEARCH_NOTES &amp; WRITEUPS</div>
+        <div class="filter-tabs">
+          <button class="tab-btn active" onclick="filterPosts('all', this)">All</button>
+          <button class="tab-btn" onclick="filterPosts('ai-sec', this)">Edge AI &amp; NIDS</button>
+          <button class="tab-btn" onclick="filterPosts('endpoint', this)">Endpoint &amp; DLP</button>
+          <button class="tab-btn" onclick="filterPosts('ctf', this)">CTF</button>
+        </div>
+      </div>
+
+      <div class="posts-grid">
+        <article class="post-card" data-cat="ai-sec">
+          <div>
+            <div class="post-meta">
+              <span>[2026-11-18] // RESEARCH NOTE</span>
+              <span>6 min read</span>
+            </div>
+            <a class="post-title" href="post-edge-iot-nids.html">
+              Designing a Resource-Asymmetric NIDS for Edge IoT Gateways (Tiny-MARL Notes)
+            </a>
+            <p class="post-excerpt">
+              Architectural trade-offs from building a lightweight multi-agent intrusion detector: entropy-gated routing,
+              concept drift adaptation (CUSUM vs. Q-learning), adversarial resource-exhaustion stress tests, and SLM Suricata rule synthesis.
+            </p>
+          </div>
+          <div class="post-footer">
+            <div class="tags">
+              <span class="tag">Edge-AI</span>
+              <span class="tag">Adversarial-ML</span>
+              <span class="tag">Suricata</span>
+            </div>
+            <a class="read-more" href="post-edge-iot-nids.html">cat post_01.md →</a>
+          </div>
+        </article>
+
+        <article class="post-card" data-cat="ctf">
+          <div>
+            <div class="post-meta">
+              <span>[2026-01-26] // VSL CTF 2026 WRITEUP</span>
+              <span>4 min read</span>
+            </div>
+            <a class="post-title" href="post-ctf-re-network.html">
+              VSL CTF 2026 Writeup: Chaining LFI &amp; Python SSTI (Key-Game &amp; Trust-Issues)
+            </a>
+            <p class="post-excerpt">
+              Walkthrough of two VSL CTF 2026 web challenges: exploiting legacy libjs-jquery-jfeed proxy.php LFI to leak secrets
+              and escaping a Python sandbox via __subclasses__() SSTI.
+            </p>
+          </div>
+          <div class="post-footer">
+            <div class="tags">
+              <span class="tag">VSL-CTF-2026</span>
+              <span class="tag">LFI</span>
+              <span class="tag">SSTI</span>
+            </div>
+            <a class="read-more" href="post-ctf-re-network.html">cat post_02.md →</a>
+          </div>
+        </article>
+
+        <article class="post-card" data-cat="endpoint">
+          <div>
+            <div class="post-meta">
+              <span>[2025-12-20] // ENGINEERING LOG (06/2025 – 12/2025)</span>
+              <span>5 min read</span>
+            </div>
+            <a class="post-title" href="post-dlp-ptit-slink.html">
+              Building an On-Premise Data Loss Prevention (DLP) System for University Infrastructure
+            </a>
+            <p class="post-excerpt">
+              Combining a Windows USB/Clipboard endpoint agent, mitmproxy HTTP/HTTPS inspection, and Vietnam-specific PII detection
+              inside a containerized FastAPI + Next.js microservices stack at RIPT (06/2025 – 12/2025).
+            </p>
+          </div>
+          <div class="post-footer">
+            <div class="tags">
+              <span class="tag">DLP</span>
+              <span class="tag">mitmproxy</span>
+              <span class="tag">Windows-Agent</span>
+            </div>
+            <a class="read-more" href="post-dlp-ptit-slink.html">cat post_03.md →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Technical Arsenal -->
+    <section id="arsenal">
+      <div class="section-head">
+        <div class="section-title">TECHNICAL_ARSENAL</div>
+      </div>
+      <div class="arsenal-grid">
+        <div class="arsenal-card">
+          <h3>// Security &amp; AI Research</h3>
+          <div class="pill-list">
+            <span class="pill">Edge IoT NIDS</span>
+            <span class="pill">Adversarial ML</span>
+            <span class="pill">Concept Drift (MMD, CUSUM)</span>
+            <span class="pill">Suricata 8.0.7</span>
+            <span class="pill">DLP &amp; PII Detection</span>
+            <span class="pill">CTF (RE / Network)</span>
+          </div>
+        </div>
+        <div class="arsenal-card">
+          <h3>// Languages, ML &amp; Infra</h3>
+          <div class="pill-list">
+            <span class="pill">Python</span>
+            <span class="pill">C / C++</span>
+            <span class="pill">Bash Scripting</span>
+            <span class="pill">LightGBM</span>
+            <span class="pill">Q-Learning / LinUCB</span>
+            <span class="pill">mitmproxy</span>
+            <span class="pill">Docker / Linux</span>
+            <span class="pill">FastAPI &amp; Next.js</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>datptit@sec-notes:~$ echo "Stay curious, hack ethically."</div>
+      <div><a href="https://github.com/datptitudu2">github.com/datptitudu2</a> | nguyentdat16@gmail.com</div>
+    </footer>
+  </main>
+
+  <script>
+    function filterPosts(cat, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.post-card').forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

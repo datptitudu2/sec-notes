@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" width="920" height="380" font-family="Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="920" height="380" rx="12" fill="#0f172a"/>
+
+  <!-- Left: Collection Layer -->
+  <rect x="24" y="24" width="260" height="332" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <text x="42" y="52" fill="#38bdf8" font-size="14" font-weight="700">1. ENDPOINT &amp; NETWORK SENSORS</text>
+
+  <rect x="44" y="78" width="220" height="105" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="154" y="104" fill="#f8fafc" font-size="13" font-weight="700" text-anchor="middle">Windows Endpoint Agent</text>
+  <text x="154" y="126" fill="#94a3b8" font-size="11" text-anchor="middle">• USB Storage Monitoring</text>
+  <text x="154" y="144" fill="#94a3b8" font-size="11" text-anchor="middle">• Clipboard Copy Interception</text>
+  <text x="154" y="162" fill="#94a3b8" font-size="11" text-anchor="middle">• Workstation Leak Prevention</text>
+
+  <rect x="44" y="210" width="220" height="115" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="154" y="236" fill="#f8fafc" font-size="13" font-weight="700" text-anchor="middle">HTTP/HTTPS Traffic Proxy</text>
+  <text x="154" y="258" fill="#94a3b8" font-size="11" text-anchor="middle">• mitmproxy TLS Inspection</text>
+  <text x="154" y="276" fill="#94a3b8" font-size="11" text-anchor="middle">• Outbound Payload Scanning</text>
+  <text x="154" y="294" fill="#94a3b8" font-size="11" text-anchor="middle">• Real-Time Policy Enforcement</text>
+
+  <!-- Middle: Detection & Microservices -->
+  <rect x="320" y="24" width="280" height="332" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+  <text x="338" y="52" fill="#10b981" font-size="14" font-weight="700">2. DETECTION &amp; MICROSERVICES</text>
+
+  <rect x="340" y="78" width="240" height="90" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="460" y="102" fill="#fbbf24" font-size="13" font-weight="700" text-anchor="middle">Vietnam PII &amp; Sensitive Detector</text>
+  <text x="460" y="124" fill="#94a3b8" font-size="11" text-anchor="middle">CCCD / CMND, Phone Numbers,</text>
+  <text x="460" y="142" fill="#94a3b8" font-size="11" text-anchor="middle">Emails, Custom Regex &amp; Keywords</text>
+
+  <rect x="340" y="190" width="240" height="72" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+  <text x="460" y="216" fill="#f8fafc" font-size="13" font-weight="700" text-anchor="middle">FastAPI Core Backend</text>
+  <text x="460" y="236" fill="#94a3b8" font-size="11" text-anchor="middle">JWT Auth, RBAC, Security Event API</text>
+
+  <rect x="340" y="280" width="240" height="56" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1.5"/>
+  <text x="460" y="304" fill="#f8fafc" font-size="12" font-weight="600" text-anchor="middle">PostgreSQL + Redis (Docker)</text>
+  <text x="460" y="322" fill="#94a3b8" font-size="11" text-anchor="middle">On-Premise Containerized Storage</text>
+
+  <!-- Right: Admin Console -->
+  <rect x="636" y="24" width="260" height="332" rx="10" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+  <text x="654" y="52" fill="#c084fc" font-size="14" font-weight="700">3. CENTRALIZED SOC CONSOLE</text>
+
+  <rect x="656" y="96" width="220" height="190" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="766" y="128" fill="#f8fafc" font-size="13" font-weight="700" text-anchor="middle">Next.js Admin Dashboard</text>
+  <text x="766" y="156" fill="#94a3b8" font-size="11" text-anchor="middle">• Real-Time Leak Alerts</text>
+  <text x="766" y="178" fill="#94a3b8" font-size="11" text-anchor="middle">• Endpoint &amp; Agent Health</text>
+  <text x="766" y="200" fill="#94a3b8" font-size="11" text-anchor="middle">• DLP Policy Management</text>
+  <text x="766" y="222" fill="#94a3b8" font-size="11" text-anchor="middle">• Incident Investigation</text>
+  <text x="766" y="250" fill="#34d399" font-size="11" font-weight="600" text-anchor="middle">Aligned with VN Cybersecurity Law</text>
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <line x1="264" y1="130" x2="338" y2="120" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="264" y1="265" x2="338" y2="145" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="460" y1="168" x2="460" y2="188" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="460" y1="262" x2="460" y2="278" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="580" y1="224" x2="654" y2="195" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arr)"/>
+</svg>

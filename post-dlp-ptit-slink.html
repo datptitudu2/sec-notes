@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On-Premise DLP System for PTIT Slink — datptit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="progress-bar" id="progress"></div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <span class="prompt">root@datptit</span>:~/writeups# <span class="cursor"></span>
+      </a>
+      <div class="nav-right">
+        <a href="index.html">← cd ..</a>
+        <a href="https://github.com/datptitudu2" target="_blank">github</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="article-wrap">
+    <div class="article-header">
+      <div class="post-meta">
+        <span>[2025-12-20] // ENGINEERING LOG (06/2025 – 12/2025)</span>
+        <span>5 min read</span>
+      </div>
+      <h1>Building an On-Premise Data Loss Prevention (DLP) System for University Infrastructure</h1>
+      <div class="tags">
+        <span class="tag">DLP</span>
+        <span class="tag">mitmproxy</span>
+        <span class="tag">Windows-Agent</span>
+        <span class="tag">Microservices</span>
+      </div>
+    </div>
+
+    <div class="article-body">
+      <p>
+        During my research internship at the <b>Research Institute of Posts and Telecommunications (RIPT)</b> in 2025, I worked on designing an internal Data Loss Prevention (DLP) prototype for PTIT's digital transformation platform (PTIT Slink), aligned with Vietnam's Cybersecurity Law and Network Information Security Law.
+      </p>
+
+      <div class="diagram-box">
+        <img src="assets/dlp-arch.svg" alt="On-Premise DLP Architecture">
+        <div class="diagram-caption">Figure 1: End-to-end DLP architecture combining Windows endpoint sensors, mitmproxy inspection, and containerized microservices.</div>
+      </div>
+
+      <h2>01. Covering Both Endpoint &amp; Network Exfiltration Channels</h2>
+      <p>
+        Internal data leaks rarely happen through a single channel. To address common exfiltration vectors on internal workstations, we split collection into two complementary sensors:
+      </p>
+      <ul>
+        <li><b>Windows Endpoint Agent:</b> Monitors removable USB storage connections and clipboard copy events to detect and restrict unauthorized local data transfers.</li>
+        <li><b>HTTP/HTTPS Inspection:</b> Uses <code>mitmproxy</code> at the network boundary to inspect outbound web traffic for sensitive payloads leaving the internal perimeter.</li>
+      </ul>
+
+      <h2>02. Vietnam-Specific PII &amp; Sensitive Data Detection</h2>
+      <p>
+        Generic DLP rulesets often miss local data formats. We integrated a custom detection module tailored to Vietnamese datasets—covering National ID (CCCD/CMND), local phone number formats, institutional emails, and domain-specific confidential keywords.
+      </p>
+
+      <h2>03. Containerized Microservices &amp; Centralized SOC Dashboard</h2>
+      <p>
+        Because university infrastructure requires strict data sovereignty, the entire backend was designed for <b>on-premise Docker deployment</b> using <b>FastAPI</b> (JWT authentication, role-based access control, security event ingestion), <b>PostgreSQL</b>, and <b>Redis</b>, paired with a <b>Next.js</b> admin dashboard for real-time alert triage and policy management.
+      </p>
+    </div>
+
+    <footer>
+      <div><a href="index.html">← Back to ~/writeups</a></div>
+      <div>© 2026 Nguyen Tien Dat (PTIT)</div>
+    </footer>
+  </main>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      document.getElementById('progress').style.width = pct + '%';
+    });
+  </script>
+</body>
+</html>

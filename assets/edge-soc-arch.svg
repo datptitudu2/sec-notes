@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 440" width="920" height="440" font-family="Segoe UI, Roboto, Arial, sans-serif">
+  <rect width="920" height="440" rx="12" fill="#0f172a"/>
+  <!-- Tier 1 Container -->
+  <rect x="24" y="24" width="530" height="392" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <text x="42" y="52" fill="#38bdf8" font-size="15" font-weight="700">TIER 1 — EDGE GATEWAY (Single CPU Core, &lt;200 MB RAM)</text>
+
+  <!-- Tier 2 Container -->
+  <rect x="580" y="24" width="316" height="392" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+  <text x="598" y="52" fill="#10b981" font-size="15" font-weight="700">TIER 2 — SOC SERVER (Out-of-Band)</text>
+
+  <!-- Tier 1 Nodes -->
+  <rect x="44" y="88" width="110" height="54" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1.5"/>
+  <text x="99" y="112" fill="#f8fafc" font-size="12" font-weight="600" text-anchor="middle">Network Flow</text>
+  <text x="99" y="129" fill="#94a3b8" font-size="11" text-anchor="middle">Features</text>
+
+  <rect x="184" y="88" width="125" height="54" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="246" y="112" fill="#f8fafc" font-size="12" font-weight="600" text-anchor="middle">Fast Model</text>
+  <text x="246" y="129" fill="#94a3b8" font-size="11" text-anchor="middle">LightGBM (Shallow)</text>
+
+  <rect x="340" y="88" width="125" height="54" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="402" y="112" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle">Entropy Gate</text>
+  <text x="402" y="129" fill="#94a3b8" font-size="11" text-anchor="middle">Agent 1 (H &gt; τ ?)</text>
+
+  <rect x="184" y="184" width="125" height="54" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="246" y="208" fill="#f8fafc" font-size="12" font-weight="600" text-anchor="middle">Deep Model</text>
+  <text x="246" y="225" fill="#94a3b8" font-size="11" text-anchor="middle">LightGBM (Deeper)</text>
+
+  <rect x="340" y="184" width="125" height="54" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+  <text x="402" y="208" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">Flow Verdict</text>
+  <text x="402" y="225" fill="#94a3b8" font-size="11" text-anchor="middle">Benign / Attack</text>
+
+  <rect x="44" y="280" width="265" height="60" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="176" y="305" fill="#c084fc" font-size="12" font-weight="700" text-anchor="middle">Adaptation Controller (Agent 2)</text>
+  <text x="176" y="324" fill="#94a3b8" font-size="11" text-anchor="middle">Concept Drift (CUSUM / Q-Learning)</text>
+
+  <rect x="340" y="280" width="190" height="60" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+  <text x="435" y="305" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">Suricata Software IPS</text>
+  <text x="435" y="324" fill="#94a3b8" font-size="11" text-anchor="middle">Live Rule Reload (~0.11s)</text>
+
+  <!-- Tier 2 Nodes -->
+  <rect x="605" y="88" width="266" height="64" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+  <text x="738" y="114" fill="#f8fafc" font-size="12" font-weight="700" text-anchor="middle">Agent 4 — SLM Field Filling</text>
+  <text x="738" y="133" fill="#94a3b8" font-size="11" text-anchor="middle">Qwen2.5-Coder-1.5B (Protocol, Port, Content)</text>
+
+  <rect x="605" y="190" width="266" height="64" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+  <text x="738" y="216" fill="#f8fafc" font-size="12" font-weight="700" text-anchor="middle">Deterministic Rule Compiler</text>
+  <text x="738" y="235" fill="#94a3b8" font-size="11" text-anchor="middle">+ suricata -T Syntax Validation</text>
+
+  <rect x="605" y="294" width="266" height="60" rx="8" fill="#0f172a" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="738" y="318" fill="#fb7185" font-size="12" font-weight="700" text-anchor="middle">Agent 3 — Offline Adversary</text>
+  <text x="738" y="336" fill="#94a3b8" font-size="11" text-anchor="middle">Stress-Testing: Escalation, Drift &amp; Evasion</text>
+
+  <!-- Arrows -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981"/>
+    </marker>
+  </defs>
+
+  <line x1="154" y1="115" x2="182" y2="115" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <line x1="309" y1="115" x2="338" y2="115" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <line x1="402" y1="142" x2="402" y2="182" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="410" y="166" fill="#94a3b8" font-size="10">Confident</text>
+
+  <path d="M 365 142 L 265 182" stroke="#f59e0b" stroke-width="1.8" fill="none" marker-end="url(#arrow)"/>
+  <text x="285" y="160" fill="#fbbf24" font-size="10">Escalate</text>
+
+  <line x1="309" y1="211" x2="338" y2="211" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <line x1="246" y1="280" x2="246" y2="240" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <text x="120" y="368" fill="#94a3b8" font-size="11">All edge inference stays local; only alert metadata leaves gateway</text>
+
+  <!-- Cross-tier arrows -->
+  <path d="M 465 200 C 530 200, 530 120, 603 120" stroke="#10b981" stroke-width="1.8" fill="none" marker-end="url(#arrowGreen)"/>
+  <text x="530" y="108" fill="#34d399" font-size="10" text-anchor="middle">Async HTTPS Alert</text>
+
+  <line x1="738" y1="152" x2="738" y2="188" stroke="#10b981" stroke-width="1.8" marker-end="url(#arrowGreen)"/>
+  <path d="M 605 222 C 560 222, 560 310, 532 310" stroke="#10b981" stroke-width="1.8" fill="none" marker-end="url(#arrowGreen)"/>
+  <text x="565" y="275" fill="#34d399" font-size="10" text-anchor="middle">Validated Rule</text>
+</svg>
